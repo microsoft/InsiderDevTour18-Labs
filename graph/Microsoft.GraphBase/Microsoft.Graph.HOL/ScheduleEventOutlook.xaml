@@ -1,0 +1,50 @@
+﻿<Page
+    x:Class="Microsoft.Graph.HOL.ScheduleEventOutlook"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Microsoft.Graph.HOL"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <FlyoutBase.AttachedFlyout>
+                <TimePickerFlyout/>
+            </FlyoutBase.AttachedFlyout>
+            <TextBlock Name="InfoText" Text="Schedule event in outlook" HorizontalAlignment="Left" Margin="183,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="37" Width="677" FontSize="22" FontWeight="Bold"/>
+            <TextBlock x:Name ="Subject" Text="Subject" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="183,0,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <TextBox Name="txtSubject" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="183,0,0,0" Width="269"/>
+            <TextBlock x:Name ="start" Text="Date Time Start" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="183,5,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <DatePicker Name="startDate" HorizontalAlignment="Left" Margin="183,0,0,0" VerticalAlignment="Top"/>
+            <TimePicker Name="starthour" HorizontalAlignment="Left" Margin="183,0,0,0" VerticalAlignment="Top"/>
+            <TextBlock x:Name ="end" Text="Date Time Start" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="183,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <DatePicker Name="endDate" HorizontalAlignment="Left" Margin="183,0,0,0" VerticalAlignment="Top"/>
+            <TimePicker Name="endhour" HorizontalAlignment="Left" Margin="183,0,0,0" VerticalAlignment="Top"/>
+            <Button Name="uploadBtn" Background="#FF287FD6" Foreground="White" 
+            FontFamily="Segoe Print" FontSize="22"
+            Click="Button_Appointment_Click" HorizontalAlignment="Left" Margin="183,10,0,0" VerticalAlignment="Top" Width="197" Height="32">
+
+                <Button.Resources>
+                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#FF42A214</SolidColorBrush>
+                    <SolidColorBrush x:Key="ButtonBackgroundPressed">#FF359308</SolidColorBrush>
+                    <SolidColorBrush x:Key="ButtonForegroundPointerOver">white</SolidColorBrush>
+                    <SolidColorBrush x:Key="ButtonForegroundPressed">white</SolidColorBrush>
+                    <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#FF267600</SolidColorBrush>
+                    <SolidColorBrush x:Key="ButtonBorderBrushPressed">#FF267600</SolidColorBrush>
+                </Button.Resources>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Schedule Event" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" FontWeight="Bold" />
+                </StackPanel>
+
+            </Button>
+        </StackPanel>
+        <ProgressRing Name="Progress" HorizontalAlignment="Left" Margin="183,86,0,0"  Height="112" RenderTransformOrigin="0.5,0.5" Width="183" VerticalAlignment="Top">
+            <ProgressRing.RenderTransform>
+                <CompositeTransform ScaleY="-1"/>
+            </ProgressRing.RenderTransform>
+        </ProgressRing>
+    </Grid>
+</Page>

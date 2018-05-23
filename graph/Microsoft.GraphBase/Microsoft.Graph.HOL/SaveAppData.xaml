@@ -1,0 +1,45 @@
+﻿<Page
+    x:Class="Microsoft.Graph.HOL.SaveAppData"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Microsoft.Graph.HOL"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Loading="Page_Loading">
+
+    <Grid>
+        <Grid>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Name="InfoText" Text="App Settings" HorizontalAlignment="Left" Margin="183,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="37" Width="677" FontSize="22" FontWeight="Bold"/>
+                <ToggleSwitch Name="toggleNot" Header="Notifications"  VerticalAlignment="Center" Margin="183,0,0,0"/>
+                <ToggleSwitch Name="ToggleNotVibration" Header="Notification Vibration"  VerticalAlignment="Center" Margin="183,0,0,0"/>
+                <ToggleSwitch Name="ToggleNotSound" Header="Notification Sound"  VerticalAlignment="Center" Margin="183,0,0,0"/>
+                <Button Name="uploadBtn" Background="#FF287FD6" Foreground="White" 
+            FontFamily="Segoe Print" FontSize="22"
+            Click="Button_SaveSettings_Click" HorizontalAlignment="Left" Margin="183,10,0,0" VerticalAlignment="Top" Width="197" Height="35">
+
+                    <Button.Resources>
+                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#FF42A214</SolidColorBrush>
+                        <SolidColorBrush x:Key="ButtonBackgroundPressed">#FF359308</SolidColorBrush>
+                        <SolidColorBrush x:Key="ButtonForegroundPointerOver">white</SolidColorBrush>
+                        <SolidColorBrush x:Key="ButtonForegroundPressed">white</SolidColorBrush>
+                        <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#FF267600</SolidColorBrush>
+                        <SolidColorBrush x:Key="ButtonBorderBrushPressed">#FF267600</SolidColorBrush>
+                    </Button.Resources>
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Save Settings" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Height="46" />
+                    </StackPanel>
+
+                </Button>
+            </StackPanel>
+            <ProgressRing Name="Progress" HorizontalAlignment="Left" Margin="184,180,0,0"  Height="112" RenderTransformOrigin="0.5,0.5" Width="183" VerticalAlignment="Top">
+                <ProgressRing.RenderTransform>
+                    <CompositeTransform ScaleY="-1"/>
+                </ProgressRing.RenderTransform>
+            </ProgressRing>
+        </Grid>
+    </Grid>
+</Page>
