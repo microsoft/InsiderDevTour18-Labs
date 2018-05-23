@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version":  "1.0",
+  "backgroundImage": "{{backgroundImage}}",
+  "body": [
+    {
+      "type": "Container",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "Timeline",
+          "weight": "bolder",
+          "size": "extraLarge",
+          "wrap": true,
+          "maxLines": 3
+        },
+        {
+          "type": "TextBlock",
+          "text": "{{name}}",
+          "size": "medium",
+          "wrap": true,
+          "maxLines": 3
+        }
+      ]
+    }
+  ]
+}

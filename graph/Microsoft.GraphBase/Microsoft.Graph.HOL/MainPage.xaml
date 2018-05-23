@@ -1,0 +1,42 @@
+﻿<Page
+    x:Class="Microsoft.Graph.HOL.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Microsoft.Graph.HOL"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <NavigationView x:Name="NavView"
+                    ItemInvoked="NavView_ItemInvoked"
+                    Loaded="NavView_Loaded"
+                    BackRequested="NavView_BackRequested"
+                    IsBackButtonVisible="Collapsed"
+                    IsSettingsVisible="False"
+                    Header="Welcome to the Microsfot Graph HOL ">
+
+        <NavigationView.MenuItems>
+            <NavigationViewItem Name="login" x:Uid="Login" Icon="AllApps" Content="Log In" Tag="LogIn"/>
+            <NavigationViewItem Name="logout" x:Uid="Logout" Icon="AllApps" Content="Log Out" Tag="LogOut" Visibility="Collapsed"/>
+            <NavigationViewItem Name="RecentFiles" x:Uid="RecentFiles" Icon="AllApps" Content="Recent Files OneDrive" Tag="RecentFiles" Visibility="Collapsed"/>
+            <NavigationViewItem Name="UploadFile" x:Uid="UploadFile" Icon="AllApps" Content="Upload file to OneDrive" Tag="UploadFile" Visibility="Collapsed"/>
+            <NavigationViewItem Name="DownloadFile" x:Uid="DownloadFile" Icon="AllApps" Content="Download file from OneDrive" Tag="DownloadFile" Visibility="Collapsed"/>
+            <NavigationViewItem Name="ContentFile" x:Uid="ContentFile" Icon="AllApps" Content="Convert content from OneDrive" Tag="ContentFile" Visibility="Collapsed"/>
+            <NavigationViewItem Name="SaveAppData" x:Uid="SaveAppData" Icon="AllApps" Content="Save App Data in OneDrive" Tag="SaveAppData" Visibility="Collapsed"/>
+            <NavigationViewItem Name="UserExtension" x:Uid="UserExtension" Icon="AllApps" Content="Add User Extension" Tag="UserExtension" Visibility="Collapsed"/>
+            <NavigationViewItem Name="OutlookContacts" x:Uid="OutlookContacts" Icon="AllApps" Content="Outlook Contacts" Tag="OutlookContacts" Visibility="Collapsed"/>
+            <NavigationViewItem Name="ScheduleEvent" x:Uid="ScheduleEvent" Icon="AllApps" Content="Schedule event in Outlook" Tag="ScheduleEvent" Visibility="Collapsed"/>
+            <NavigationViewItem Name="Activity" x:Uid="Activity" Icon="AllApps" Content="Add in TimeLine" Tag="Activity" Visibility="Collapsed"/>
+        </NavigationView.MenuItems>
+
+        <Frame x:Name="ContentFrame" Margin="24">
+            <Frame.ContentTransitions>
+                <TransitionCollection>
+                    <NavigationThemeTransition/>
+                </TransitionCollection>
+            </Frame.ContentTransitions>
+        </Frame>
+
+    </NavigationView>
+</Page>
