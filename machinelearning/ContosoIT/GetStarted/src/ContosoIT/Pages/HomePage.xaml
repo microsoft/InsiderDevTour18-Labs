@@ -1,0 +1,49 @@
+﻿<Page x:Class="ContosoIT.Pages.HomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
+
+    <StackPanel Orientation="Vertical" Margin="52">
+        <RelativePanel>
+            <TextBlock x:Name="WelcomeTitle"
+                       Margin="0,0,0,12"
+                       FontSize="28"
+                       FontWeight="Bold"
+                       Foreground="{StaticResource DarkGrey}"
+                       TextWrapping="WrapWholeWords">
+                <Run Text="Welcome back," />
+                <Run Foreground="{StaticResource DarkGrey}" Text="Justin" />
+            </TextBlock>
+
+            <TextBlock MaxWidth="320"
+                       Margin="0,0,0,48"
+                       FontSize="16"
+                       Foreground="{StaticResource Offwhite}"
+                       RelativePanel.Below="WelcomeTitle"
+                       Text="Capture an image of the device to get started!"
+                       TextWrapping="WrapWholeWords" />
+        </RelativePanel>
+        <StackPanel Orientation="Horizontal">
+            <Button VerticalAlignment="Top" BorderBrush="White" Click="OnTakePhotoClick" BorderThickness="1,1,1,1" Margin="0,0,20,0">
+                <Button.Background>
+                    <AcrylicBrush TintColor="#CCFFFFFF" FallbackColor="#FF6DC5CC" TintOpacity="0.4" BackgroundSource="Backdrop"/>
+                </Button.Background>
+                <StackPanel Orientation="Vertical" Height="150" Width="150">
+                    <Image Source="ms-appx:///Assets/icon_camera.png" Width="50" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,35,0,0" />
+                    <TextBlock Foreground="White" HorizontalAlignment="Center" Margin="0,10,0,0">Take Photo</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button VerticalAlignment="Top" BorderBrush="White" Click="OnAttachImageClick" BorderThickness="1,1,1,1">
+                <Button.Background>
+                    <AcrylicBrush TintColor="#CCFFFFFF" FallbackColor="#FF6DC5CC" TintOpacity="0.4"/>
+                </Button.Background>
+                <StackPanel Orientation="Vertical" Height="150" Width="150">
+                    <Image Source="ms-appx:///Assets/icon_clip.png" Width="50" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,35,0,0" />
+                    <TextBlock Foreground="White" HorizontalAlignment="Center" Margin="0,10,0,0">Attach Image</TextBlock>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </StackPanel>
+</Page>

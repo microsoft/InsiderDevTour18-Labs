@@ -1,0 +1,41 @@
+﻿<Page x:Class="ContosoIT.Pages.DevicesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
+
+    <Grid Margin="0,-20,0,0">
+        <Grid Name="MainGrid" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+            <Image Name="DetectedImage" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="2" Stretch="UniformToFill" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="1" Padding="15,15,15,15" Height="125" VerticalAlignment="Top" Width="200" HorizontalAlignment="Left" FocusVisualPrimaryBrush="White" Margin="0,1,0,0" Grid.ColumnSpan="2" BorderBrush="White" BorderThickness="1,1,1,1">
+                <StackPanel.Background>
+                    <AcrylicBrush TintColor="#CCFFFFFF" FallbackColor="#FFCFCFCF" TintOpacity="0.4"/>
+                </StackPanel.Background>
+                <TextBlock Foreground="White" FontSize="22">Found</TextBlock>
+                <StackPanel Background="White" Padding="5,5,5,5" Width="150" HorizontalAlignment="Left" Margin="0,23,0,3">
+                    <TextBlock Name="DetectedLabel" HorizontalAlignment="Center" Margin="0,4,0,2" />
+                </StackPanel>
+            </StackPanel>
+            <ListView x:Name="SuggestionsListView"  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,50,50,50" ShowsScrollingPlaceholders="False" RequestedTheme="Dark" IsTapEnabled="False" VerticalContentAlignment="Center">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Foreground="White" Text="{Binding}" VerticalAlignment="Center" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+        <ProgressRing Name="Progress" Width="50" Height="50" Foreground="White"/>
+        <TextBlock Name="NoDeviceFound" Text="No device found" FontSize="22" Foreground="White" Margin="0,52,0,0"/>
+    </Grid>
+</Page>
