@@ -18,8 +18,19 @@
     @RenderSection("HeadExtension", required: false)
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Knowzy</title>
+    @* Icons for iOS, Android *@
+    <link rel="apple-touch-icon" href="~/images/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" href="~/images/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" href="~/images/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="~/images/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="~/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/images/favicon-16x16.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
 
-    <link rel="manifest" href="manifest.json"></link>
+    <link rel="manifest" href="manifest.json">
 
     <script>
         //This is the service worker with the Cache-first network
