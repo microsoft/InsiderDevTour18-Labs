@@ -1,0 +1,29 @@
+﻿<Page
+    x:Class="AlarmClock.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AlarmClock"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="250"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <controls:CameraPreview Grid.Row="0" Grid.ColumnSpan="2" x:Name="camera" />
+        <TextBlock Grid.Row="2" Grid.ColumnSpan="2" x:Name="DetectedEmotion" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="30"></TextBlock>
+        <TextBlock Grid.Row="1" Grid.ColumnSpan="2" x:Name="EmotionText" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="30"></TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="0" x:Name="TimeText" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" Margin="100,0,0,0"  Foreground="White" FontSize="180">12:00:00</TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="1" x:Name="AlarmText" VerticalAlignment="Top" HorizontalAlignment="Right" TextAlignment="Right" Margin="0, 10, 10, 0" Foreground="White" FontSize="20">Alarm ON</TextBlock>
+    </Grid>
+</Page>
