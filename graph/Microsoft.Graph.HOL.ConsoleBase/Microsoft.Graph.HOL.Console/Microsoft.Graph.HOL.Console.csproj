@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EC2CF451-349D-4879-81FC-3BD7669488EB}</ProjectGuid>
+    <ProjectGuid>{ECD85D6B-EF05-43E1-B313-413AA652ACA5}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Microsoft.Graph.HOL.Console</RootNamespace>
     <AssemblyName>Microsoft.Graph.HOL.Console</AssemblyName>

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{0E38365C-9FA6-4633-B8F3-247C8C8E9370}</ProjectGuid>
+    <ProjectGuid>{6276C57D-E96F-415E-92DF-6EF95B030069}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ContosoIT</RootNamespace>

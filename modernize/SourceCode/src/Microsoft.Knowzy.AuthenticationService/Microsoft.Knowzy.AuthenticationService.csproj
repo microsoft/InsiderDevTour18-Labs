@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C1DF2B58-D707-418F-9189-E37751C3EF2C}</ProjectGuid>
+    <ProjectGuid>{AFBDE57B-CC01-4742-8A92-733B46DB7B87}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Knowzy.AuthenticationService</RootNamespace>

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{851520B0-9683-4583-9861-15C4443E69D8}</ProjectGuid>
+    <ProjectGuid>{230D0A81-2212-46FE-A0D2-BF5F73190091}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AlarmClock</RootNamespace>

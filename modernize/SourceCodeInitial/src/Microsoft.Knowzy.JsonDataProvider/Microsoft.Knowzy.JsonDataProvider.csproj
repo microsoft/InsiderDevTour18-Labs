@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8B422449-2C55-4433-AD84-0781FFCDF149}</ProjectGuid>
+    <ProjectGuid>{9427D411-2728-4935-B700-70DA483C70D2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Knowzy.JsonDataProvider</RootNamespace>

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{85FF4DD3-84CF-4D48-9DDB-A8E460445D33}</ProjectGuid>
+    <ProjectGuid>{8381CD81-003B-4786-A939-971798F4525C}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Graph.HOL</RootNamespace>
