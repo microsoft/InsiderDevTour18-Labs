@@ -12,7 +12,7 @@
         // The Client ID is used by the application to uniquely identify itself to the v2.0 authentication endpoint.
         static string clientId = App.Current.Resources["ida:ClientID"].ToString();
         public static string[] Scopes = {
-            "User.Read",
+            "User.ReadWrite",
             "Mail.Send",
             "Files.ReadWrite",
             "Contacts.Read",
