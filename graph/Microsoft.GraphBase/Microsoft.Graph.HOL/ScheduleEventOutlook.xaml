@@ -19,7 +19,7 @@
             <TextBlock x:Name ="start" Text="Date Time Start" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="183,5,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
             <DatePicker Name="startDate" HorizontalAlignment="Left" Margin="183,0,0,0" VerticalAlignment="Top"/>
             <TimePicker Name="starthour" HorizontalAlignment="Left" Margin="183,0,0,0" VerticalAlignment="Top"/>
-            <TextBlock x:Name ="end" Text="Date Time Start" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="183,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <TextBlock x:Name ="end" Text="Date Time Stop" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="183,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
             <DatePicker Name="endDate" HorizontalAlignment="Left" Margin="183,0,0,0" VerticalAlignment="Top"/>
             <TimePicker Name="endhour" HorizontalAlignment="Left" Margin="183,0,0,0" VerticalAlignment="Top"/>
             <Button Name="uploadBtn" Background="#FF287FD6" Foreground="White" 
