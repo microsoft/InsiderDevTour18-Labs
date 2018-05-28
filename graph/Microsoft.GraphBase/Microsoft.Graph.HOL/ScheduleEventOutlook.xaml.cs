@@ -23,7 +23,7 @@ namespace Microsoft.Graph.HOL
                 this.Progress.IsActive = true;
                 var startDate = new DateTime(this.startDate.Date.Year, this.startDate.Date.Month, this.startDate.Date.Day, this.starthour.Time.Hours, this.starthour.Time.Minutes, this.starthour.Time.Seconds);
                 var endDate = new DateTime(this.endDate.Date.Year, this.endDate.Date.Month, this.endDate.Date.Day, this.endhour.Time.Hours, this.endhour.Time.Minutes, this.endhour.Time.Seconds);
-                await OutlookHeñper.SetAppintment(this.Subject.Text, startDate, endDate);
+                await OutlookHeñper.SetAppointment(this.txtSubject.Text, startDate, endDate);
 
                 InfoText.Text = "Event scheduled correctly";
             }

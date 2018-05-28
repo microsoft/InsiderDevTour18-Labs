@@ -11,7 +11,7 @@
             throw new NotImplementedException();          
         }
 
-        public static async Task SetAppintment(string subject, DateTime startCombo, DateTime endCombo)
+        public static async Task SetAppointment(string subject, DateTime startCombo, DateTime endCombo)
         {
             throw new NotImplementedException();
         }
