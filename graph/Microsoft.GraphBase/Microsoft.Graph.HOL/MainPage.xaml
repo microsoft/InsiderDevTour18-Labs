@@ -14,7 +14,7 @@
                     BackRequested="NavView_BackRequested"
                     IsBackButtonVisible="Collapsed"
                     IsSettingsVisible="False"
-                    Header="Welcome to the Microsfot Graph HOL ">
+                    Header="Welcome to the Microsoft Graph HOL ">
 
         <NavigationView.MenuItems>
             <NavigationViewItem Name="login" x:Uid="Login" Icon="AllApps" Content="Log In" Tag="LogIn"/>
