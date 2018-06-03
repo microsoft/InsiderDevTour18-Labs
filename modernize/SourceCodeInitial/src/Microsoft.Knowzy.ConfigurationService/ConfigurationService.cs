@@ -23,7 +23,7 @@ namespace Microsoft.Knowzy.Configuration
 
         public ConfigurationService(IFileHelper fileHelper, IJsonHelper jsonHelper)
         {
-            Configuration = jsonHelper.Deserialize<ConfigurationModel>(fileHelper.ReadTextFile(fileHelper.ActualPath + ConfigurationFilePath));
+            Configuration = jsonHelper.Deserialize<ConfigurationModel>(fileHelper.ReadTextFile(ConfigurationFilePath));
         }
 
         public IConfigurationModel Configuration

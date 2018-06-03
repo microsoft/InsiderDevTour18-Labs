@@ -24,7 +24,7 @@ namespace Microsoft.Knowzy.WPF.Helpers
 
         public string ReadTextFile(string filePath)
         {
-            using (var reader = new StreamReader(filePath))
+            using (var reader = new StreamReader(ActualPath + filePath))
             {
                 return reader.ReadToEnd();
             }
