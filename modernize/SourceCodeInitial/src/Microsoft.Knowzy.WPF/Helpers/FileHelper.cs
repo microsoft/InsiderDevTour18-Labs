@@ -32,7 +32,7 @@ namespace Microsoft.Knowzy.WPF.Helpers
 
         public void WriteTextFile(string filePath, string content)
         {
-            using (var writer = new StreamWriter(filePath))
+            using (var writer = new StreamWriter(ActualPath + filePath))
             {
                 writer.WriteLine(content);
             }
