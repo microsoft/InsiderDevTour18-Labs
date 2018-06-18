@@ -61,8 +61,8 @@ namespace AlarmClock
             "Contempt"
         };
 
-            await camera.Start();
-            camera.CameraHelper.FrameArrived += Preview_FrameArrived;
+            await camera.StartAsync();
+            camera.CameraHelper.FrameArrived += CameraHelper_FrameArrived;
 
             timer.Elapsed += Timer_Elapsed;
             timer.Start();
@@ -75,6 +75,11 @@ namespace AlarmClock
             clockTimer.Interval = TimeSpan.FromMilliseconds(300);
             clockTimer.Tick += Timer_Tick;
             clockTimer.Start();
+        }
+
+        private void CameraHelper_FrameArrived(object sender, Microsoft.Toolkit.Uwp.Helpers.FrameEventArgs e)
+        {
+            lastFrame = e.VideoFrame;
         }
 
         private void Timer_Tick(object sender, object e)
@@ -108,11 +113,6 @@ namespace AlarmClock
                 DetectedEmotion.Text = text;
             }
             );
-        }
-
-        private async void Preview_FrameArrived(object sender, Microsoft.Toolkit.Uwp.Helpers.CameraHelper.FrameEventArgs e)
-        {
-            lastFrame = e.VideoFrame;
         }
 
         private async Task AnalyzeFrame()
