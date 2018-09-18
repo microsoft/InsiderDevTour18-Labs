@@ -30,6 +30,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using System.Timers;
+using Windows.AI.MachineLearning;
 using Windows.Graphics.Imaging;
 using Windows.Media;
 using Windows.Media.FaceAnalysis;
@@ -56,7 +57,7 @@ namespace AlarmClock
         private string detectedEmotion = string.Empty;
         private Timer timer = new Timer(5000);
         private VideoFrame lastFrame;
-        private CNTKGraphModel model;
+        private FER_Emotion_RecognitionModel model = new FER_Emotion_RecognitionModel();
         private DispatcherTimer clockTimer;
         private bool alarmOn = true;
         private SolidColorBrush red = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0));
@@ -149,8 +150,9 @@ namespace AlarmClock
                 detectedEmotion = await DetectEmotionWithWinML();
                 await ProcessEmotion(detectedEmotion);
             }
-            catch
+            catch (Exception ex)
             {
+                Debug.WriteLine(ex.Message);
                 return;
             }
         }
@@ -195,14 +197,15 @@ namespace AlarmClock
         }
         private async void InitializeModel()
         {
-            string modelPath = @"ms-appx:///Assets/FER-Emotion-Recognition.onnx";
+            string modelPath = @"ms-appx:///Assets/FER_Emotion_Recognition.onnx";
             StorageFile modelFile = await StorageFile.GetFileFromApplicationUriAsync(new Uri(modelPath));
-            model = await CNTKGraphModel.CreateCNTKGraphModel(modelFile);
+            model = await FER_Emotion_RecognitionModel.CreateFromStreamAsync(modelFile);
         }
 
         private async Task<string> DetectEmotionWithWinML()
         {
             var videoFrame = lastFrame;
+            string label = String.Empty;
 
             if (faceDetector == null)
             {
@@ -211,18 +214,21 @@ namespace AlarmClock
 
             var detectedFaces = await faceDetector.DetectFacesAsync(videoFrame.SoftwareBitmap);
 
-            if (detectedFaces != null && detectedFaces.Any())
+            if (detectedFaces.Count > 0)
             {
-                var face = detectedFaces.OrderByDescending(s => s.FaceBox.Height * s.FaceBox.Width).First();
-                var randomAccessStream = new InMemoryRandomAccessStream();
-                var decoder = await BitmapDecoder.CreateAsync(randomAccessStream);
-                var croppedImage = await decoder.GetSoftwareBitmapAsync(decoder.BitmapPixelFormat, BitmapAlphaMode.Ignore, new BitmapTransform() { Bounds = new BitmapBounds() { X = face.FaceBox.X, Y = face.FaceBox.Y, Width = face.FaceBox.Width, Height = face.FaceBox.Height } }, ExifOrientationMode.IgnoreExifOrientation, ColorManagementMode.DoNotColorManage);
-                videoFrame = VideoFrame.CreateWithSoftwareBitmap(croppedImage);
-            }
+                //var face = detectedFaces.OrderByDescending(s => s.FaceBox.Height * s.FaceBox.Width).First();
+                //var randomAccessStream = new InMemoryRandomAccessStream();
+                //var decoder = await BitmapDecoder.CreateAsync(randomAccessStream);
+                //var croppedImage = await decoder.GetSoftwareBitmapAsync(decoder.BitmapPixelFormat, BitmapAlphaMode.Ignore, new BitmapTransform() { Bounds = new BitmapBounds() { X = face.FaceBox.X, Y = face.FaceBox.Y, Width = face.FaceBox.Width, Height = face.FaceBox.Height } }, ExifOrientationMode.IgnoreExifOrientation, ColorManagementMode.DoNotColorManage);
+                //videoFrame = VideoFrame.CreateWithSoftwareBitmap(croppedImage);
 
-            var emotion = await model.EvaluateAsync(new CNTKGraphModelInput() { Input338 = videoFrame });
-            var index = emotion.Plus692_Output_0.IndexOf(emotion.Plus692_Output_0.Max());
-            string label = labels[index];
+                var input = ImageFeatureValue.CreateFromVideoFrame(videoFrame);
+                var emotion = await model.EvaluateAsync(new FER_Emotion_RecognitionInput() { Input3 = input });
+                var list = new List<float>(emotion.Plus692_Output_0.GetAsVectorView());
+                var index = list.IndexOf(list.Max());
+                label = labels[index];
+                Debug.WriteLine(label + " " + DateTime.Now);
+            }
 
             return label;
         }
