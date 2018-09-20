@@ -205,7 +205,6 @@ namespace AlarmClock
         private async Task<string> DetectEmotionWithWinML()
         {
             var videoFrame = lastFrame;
-            string label = String.Empty;
 
             if (faceDetector == null)
             {
@@ -214,21 +213,37 @@ namespace AlarmClock
 
             var detectedFaces = await faceDetector.DetectFacesAsync(videoFrame.SoftwareBitmap);
 
-            if (detectedFaces.Count > 0)
+            if (detectedFaces != null && detectedFaces.Any())
             {
-                //var face = detectedFaces.OrderByDescending(s => s.FaceBox.Height * s.FaceBox.Width).First();
-                //var randomAccessStream = new InMemoryRandomAccessStream();
-                //var decoder = await BitmapDecoder.CreateAsync(randomAccessStream);
-                //var croppedImage = await decoder.GetSoftwareBitmapAsync(decoder.BitmapPixelFormat, BitmapAlphaMode.Ignore, new BitmapTransform() { Bounds = new BitmapBounds() { X = face.FaceBox.X, Y = face.FaceBox.Y, Width = face.FaceBox.Width, Height = face.FaceBox.Height } }, ExifOrientationMode.IgnoreExifOrientation, ColorManagementMode.DoNotColorManage);
-                //videoFrame = VideoFrame.CreateWithSoftwareBitmap(croppedImage);
+                var face = detectedFaces.OrderByDescending(s => s.FaceBox.Height * s.FaceBox.Width).First();
+                using (var randomAccessStream = new InMemoryRandomAccessStream())
+                {
+                    var encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.BmpEncoderId, randomAccessStream);
+                    var softwareBitmap = SoftwareBitmap.Convert(videoFrame.SoftwareBitmap, BitmapPixelFormat.Rgba16);
+                    Debug.WriteLine(softwareBitmap.BitmapPixelFormat);
+                    encoder.SetSoftwareBitmap(softwareBitmap);
+                    encoder.BitmapTransform.Bounds = new BitmapBounds
+                    {
+                        X = face.FaceBox.X,
+                        Y = face.FaceBox.Y,
+                        Width = face.FaceBox.Width,
+                        Height = face.FaceBox.Height
+                    };
 
-                var input = ImageFeatureValue.CreateFromVideoFrame(videoFrame);
-                var emotion = await model.EvaluateAsync(new FER_Emotion_RecognitionInput() { Input3 = input });
-                var list = new List<float>(emotion.Plus692_Output_0.GetAsVectorView());
-                var index = list.IndexOf(list.Max());
-                label = labels[index];
-                Debug.WriteLine(label + " " + DateTime.Now);
+                    await encoder.FlushAsync();
+
+                    var decoder = await BitmapDecoder.CreateAsync(randomAccessStream);
+                    var croppedImage = await decoder.GetSoftwareBitmapAsync(softwareBitmap.BitmapPixelFormat, softwareBitmap.BitmapAlphaMode);
+
+                    videoFrame = VideoFrame.CreateWithSoftwareBitmap(croppedImage);
+                }
             }
+
+            var input = ImageFeatureValue.CreateFromVideoFrame(videoFrame);
+            var emotion = await model.EvaluateAsync(new FER_Emotion_RecognitionInput() { Input3 = input });
+            var list = new List<float>(emotion.Plus692_Output_0.GetAsVectorView());
+            var index = list.IndexOf(list.Max());
+            var label = labels[index];
 
             return label;
         }
