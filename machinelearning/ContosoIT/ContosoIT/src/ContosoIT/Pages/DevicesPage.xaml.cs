@@ -25,6 +25,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Windows.AI.MachineLearning;
 using Windows.ApplicationModel;
 using Windows.Graphics.Imaging;
 using Windows.Media;
@@ -68,9 +69,10 @@ namespace ContosoIT.Pages
             UpdateProgressRingAndResultsVisibility(true);
 
             // Your code goes here
-            ContosoITModelInput modelInput = new ContosoITModelInput() { data = await ImageToVideoframe(detectionDataParameters.SelectedFile) };
-            ContosoITModelOutput modelResult = await model.EvaluateAsync(modelInput);
-            var classLabel = modelResult.classLabel.FirstOrDefault();
+            var videoFrame = await ImageToVideoframe(detectionDataParameters.SelectedFile);
+            ContosoITInput modelInput = new ContosoITInput() { data = ImageFeatureValue.CreateFromVideoFrame(videoFrame)};
+            ContosoITOutput modelResult = await model.EvaluateAsync(modelInput);
+            var classLabel = modelResult.classLabel.GetAsVectorView().FirstOrDefault();
 
             await ShowResults(detectionDataParameters.SelectedFile, classLabel);
         }
@@ -79,7 +81,7 @@ namespace ContosoIT.Pages
         {
             string modelPath = @"ms-appx:///Assets/ContosoIT.onnx";
             StorageFile modelFile = await StorageFile.GetFileFromApplicationUriAsync(new Uri(modelPath));
-            model = await ContosoIT.ContosoITModel.CreateContosoITModel(modelFile);
+            model = await ContosoIT.ContosoITModel.CreateFromStreamAsync(modelFile);
         }
 
         private async Task<VideoFrame> ImageToVideoframe(StorageFile imageFile)
